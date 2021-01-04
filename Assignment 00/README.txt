@@ -10,3 +10,5 @@ Difficult Topics
 3) Naming things
 4) Theoretical Computer Science
 5) writing tests/debugging
+
+Charlie Say
