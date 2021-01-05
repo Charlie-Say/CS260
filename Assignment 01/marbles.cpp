@@ -3,18 +3,6 @@
 #include <list>
 using namespace std;
 
-void printList(list<int> mylist)
-{
-
-    // Get the iterator
-    list<int>::iterator it;
-
-    // printing all the elements of the list
-    for (it = mylist.begin(); it != mylist.end(); ++it)
-        cout << ' ' << *it;
-    cout << '\n';
-}
-
 int main()
 {
     string rem_add;
@@ -23,7 +11,6 @@ int main()
 
     int amountMarbles;
     //create array (bag)
-    int total_ele;
     list<int> bag;
     list<int>::iterator it;
 
@@ -68,6 +55,9 @@ int main()
     }
 
     cout << "There are now " << (int)bag.size() << " marbles in the bag." << endl;
+
+    for (list<int>::iterator i = bag.begin(); i != bag.end(); ++i)
+        cout << *i << " ";
 
     return 0;
 }
