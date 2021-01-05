@@ -1,4 +1,4 @@
-Marbles will be represented by numbers according to color.
+Marbles will be represented by numbers.
 There will be a user prompt to add new marbles. Then the marbles will be added to the array.
 There will be a user prompt to remove marbles. If this happens, it will
 pick random marble and pop from the array.
