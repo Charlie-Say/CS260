@@ -7,3 +7,4 @@ pick random marble and pop from the array.
 2) Add marbles (amount, random numbers for colors).
 3) Pop a random marble out of array and verify what number/color it is.
 4) Add marbles by typing specific command.
+testing github
