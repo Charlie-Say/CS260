@@ -33,13 +33,17 @@ int main ()
     for (int i=0; i<5; i++) bag.push_back(0);
 
     //check amount of marbles in bag
-    cout << "There are currently " << (int) bag.size() << "marbles in the bag" << endl;
+    cout << "There are currently " << (int) bag.size() << " marbles in the bag." << endl;
 
     //if statement add or remove marbles
     cout << "Would you like to 'add' or 'remove' marbles? ";
     cin >> rem_add;
 
-    if (rem_add != add || rem_add != remove)
+    if (rem_add != add)
+    {
+        cout << "Not valid command!" << endl;
+    }
+    if (rem_add != remove)
     {
         cout << "Not valid command!" << endl;
     }
@@ -68,7 +72,7 @@ int main ()
         }
     }
 
-    cout << "There are now " << (int) bag.size() << "in the bag." << endl;
+    cout << "There are now " << (int) bag.size() << " marbles in the bag." << endl;
 
     return 0;
 }
