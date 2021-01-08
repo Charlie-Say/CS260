@@ -1,3 +1,19 @@
+/*
+    Create an array-based list and then a linked-list that allows:
+    - an add function that takes a value and inserts it into a given position into the list
+      (example: myList.add(someValue, somePosition) )
+    - a remove function that takes a position and removes the value stored at that position of the list and returns it
+      (example: myList.remove(somePosition) )
+    - a get function that takes a position and returns that value without removing it
+
+
+    Time complexity analysis for this program would be O(n). This program compares the input to the position starting from the head
+    of the node. The value in this case does not matter, but the container size (linked list) would change how long the algorithm
+    would take to complete the process. The larger the container, the more comparisons that could possibly take place to find the
+    correct position of the input.
+
+*/
+
 #include <bits/stdc++.h> 
 using namespace std; 
   
