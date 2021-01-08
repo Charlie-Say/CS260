@@ -98,7 +98,6 @@ int main()
 {
     int data;
     int counter = 5;
-    int inputCounter = 3;
     string yesNo;
     linked_list randomList;
 
