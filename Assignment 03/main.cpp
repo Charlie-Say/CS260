@@ -63,7 +63,7 @@ public:
         temp = head;
         head = head->next;
         delete temp;
-        return temp;
+        return 0;
     }
 };
 
@@ -75,10 +75,7 @@ int main()
     int counter = 5;
     int inputCounter = 3;
     string yesNo;
-
     linked_list randomList;
-
-
 
     while (true)
     {
@@ -106,14 +103,11 @@ int main()
             linked_list::display(randomList.gethead());
         }
 
-
         if (inputCounter == 0)
         {
             break;
         }
     }
-
-
 
     return 0;
 }
