@@ -144,10 +144,16 @@ int main()
     cout << "Linked list after insertion of 1 at position 1: "; 
     printList(head); 
   
-    // insetion at end of the linked list 
+    // insertion at end of the linked list 
     data = 15, pos = 7; 
     insertPos(&head, pos, data); 
     cout << "Linked list after insertion of 15 at position 7: "; 
+    printList(head);
+
+     // delete node at end of the linked list 
+    pos = 5; 
+    deleteNode(&head, pos); 
+    cout << "Linked list after deletion of 10 at position 6: "; 
     printList(head); 
   
     return 0; 
