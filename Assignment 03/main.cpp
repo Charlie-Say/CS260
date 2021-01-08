@@ -1,7 +1,20 @@
+/*
+    Design, implement, and test a Queue data structure that:
+    - uses a linked-list to store the values of the queue
+    - has an enqueue function that will appropriately add a value to the back of the queue as an appropriate element
+    - has a dequeue function that will appropriately remove an element from the front of the queue and return its value
+
+    Time complexity analysis for this program would be O(n). As the amount of input increases, so does the steps
+    required to change the pointers to a different value. The value in this case would not matter since they are not
+    used in the program, but only function as an input. With the amount of input increasing, the complexity will grow
+    in linear complexity, O(n).
+
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
-  
+
 struct node
 {
     int data;
@@ -19,7 +32,7 @@ public:
         tail = NULL;
     }
 
-    // Add a value to BACK of the queue
+/* Add a value to BACK of the queue */
     void enqueue(int n)
     {
         node *tmp = new node;
@@ -56,7 +69,7 @@ public:
         }
     }
 
-// Remove element from FRONT of the queue and return its value
+/* Remove element from FRONT of the queue and return its value */
     int dequeue()
     {
         node* temp;
@@ -68,7 +81,7 @@ public:
 };
 
 
-// Driver code 
+/* Driver code */ 
 int main() 
 {
     int data;
