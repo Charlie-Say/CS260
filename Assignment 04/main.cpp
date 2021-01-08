@@ -10,7 +10,7 @@
     Time complexity analysis for this program would be O(n). This program compares the input to the position starting from the head
     of the node. The value in this case does not matter, but the container size (linked list) would change how long the algorithm
     would take to complete the process. The larger the container, the more comparisons that could possibly take place to find the
-    correct position of the input.
+    correct position of the input, but it still only runs through the container one time.
 
 */
 
