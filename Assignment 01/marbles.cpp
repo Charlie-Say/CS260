@@ -25,7 +25,6 @@ int main() {
     cin >> rem_add;
 
     if (rem_add != add && rem_add != remove) {
-
         cout << "Not valid command! Try again." << endl;
         return 0;
     }
@@ -34,22 +33,17 @@ int main() {
     cin >> amountMarbles;
 
     if (amountMarbles > 50) {
-
         cout << "Too many marbles" << endl;
         return 0;
     }
 
     else if (rem_add == add) {
-
         for (int i = 0; i < amountMarbles; i++) {
-
             bag.push_back(0);
         }
     }
     else if (rem_add == remove) {
-
         for (int i = 0; i < amountMarbles; i++) {
-            
             bag.pop_back();
         }
     }
