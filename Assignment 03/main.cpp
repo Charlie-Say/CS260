@@ -56,6 +56,7 @@ public:
         if(head == NULL) {
             cout << "NULL" << endl;
         }
+
         else {
             cout << head->data << endl;
             display(head->next);
@@ -71,7 +72,6 @@ public:
         return 0;
     }
 };
-
 
 /* Driver code */ 
 int main() {
