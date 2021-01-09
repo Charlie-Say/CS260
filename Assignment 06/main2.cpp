@@ -91,9 +91,51 @@ public:
         }
     }
 
-    void binaryTree(int n) {
+    void enqueuePos(int n) {
 
-        
+        node *tmp = new node;
+        tmp->data = n;
+        tmp->next = NULL;
+
+        if(head == NULL)
+        {
+            return;
+        }
+        else
+        {
+            tail->next = tmp;
+            tail = tail->next;
+
+            // test to see if data is integer
+            // if(tmp->data == 2) {
+            //     cout << "it is integer" << endl;
+            // }
+            // else{
+            //     cout << "it is Not integer" << endl;
+            // }
+            // cout << tail->data << endl;  // prints the tail value
+            // ---------------------------------------------------------------------------------------------
+
+            // node *current = tail, *index = NULL;
+            // int tmp = n;
+            
+            
+            while(current != NULL) {
+                //Node index will point to node next to current
+                index = current->next;
+
+                while(index != NULL) {
+                    //If current node's data is greater than index's node data, swap the data between them
+                    if(current->data > index->data) {
+                        tmp = current->data;
+                        current->data = index->data;
+                        index->data = tmp;
+                    }
+                    index = index->next;
+                }
+                current = current->next;
+            }
+        }
     }
 
 };
@@ -106,7 +148,8 @@ int main()
 
     int dataTwo;
     int counterTwo = 2;
-
+    
+    string yesNo;
     linked_list randomList;
 
 
