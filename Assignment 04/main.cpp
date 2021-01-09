@@ -27,8 +27,7 @@ struct Node {
 int size = 0;
 
 // function to create and return a Node
-Node* getNode(int data)
-{
+Node* getNode(int data) {
     // allocating space
     Node* newNode = new Node();
 
@@ -39,12 +38,12 @@ Node* getNode(int data)
 }
 
 // function to insert a Node at required position
-void insertPos(Node** current, int pos, int data)
-{
+void insertPos(Node** current, int pos, int data) {
     // This condition to check whether the
     // position given is valid or not.
     if (pos < 1 || pos > size + 1)
         cout << "Invalid position!" << endl;
+
     else {
 
         // Keep looping until the pos is zero
@@ -72,8 +71,7 @@ void insertPos(Node** current, int pos, int data)
     }
 }
 
-void deleteNode(struct Node **head_ref, int position)
-{ 
+void deleteNode(struct Node **head_ref, int position) {
    // If linked list is empty
    if (*head_ref == NULL)
       return;
@@ -82,8 +80,7 @@ void deleteNode(struct Node **head_ref, int position)
    struct Node* temp = *head_ref;
 
     // If head needs to be removed
-    if (position == 0)
-    {
+    if (position == 0) {
         *head_ref = temp->next;   // Change head
         free(temp);               // free old head
         return;
@@ -109,8 +106,7 @@ void deleteNode(struct Node **head_ref, int position)
 
 // This function prints contents
 // of the linked list
-void printList(struct Node* head)
-{
+void printList(struct Node* head) {
     while (head != NULL) {
         cout << " " << head->data;
         head = head->next;
@@ -119,8 +115,8 @@ void printList(struct Node* head)
 }
 
 // Driver Code
-int main()
-{
+int main() {
+
     // Creating the list 3->5->8->10
     Node* head = NULL;
     head = getNode(3);
