@@ -3,8 +3,8 @@
 #include <list>
 using namespace std;
 
-int main()
-{
+int main() {
+
     string rem_add;
     string remove = "remove";
     string add = "add";
@@ -24,8 +24,8 @@ int main()
     cout << "Would you like to 'add' or 'remove' marbles? ";
     cin >> rem_add;
 
-    if (rem_add != add && rem_add != remove)
-    {
+    if (rem_add != add && rem_add != remove) {
+
         cout << "Not valid command! Try again." << endl;
         return 0;
     }
@@ -33,23 +33,23 @@ int main()
     cout << "How many marbles? ";
     cin >> amountMarbles;
 
-    if (amountMarbles > 50)
-    {
+    if (amountMarbles > 50) {
+
         cout << "Too many marbles" << endl;
         return 0;
     }
 
-    else if (rem_add == add)
-    {
-        for (int i = 0; i < amountMarbles; i++)
-        {
+    else if (rem_add == add) {
+
+        for (int i = 0; i < amountMarbles; i++) {
+
             bag.push_back(0);
         }
     }
-    else if (rem_add == remove)
-    {
-        for (int i = 0; i < amountMarbles; i++)
-        {
+    else if (rem_add == remove) {
+
+        for (int i = 0; i < amountMarbles; i++) {
+            
             bag.pop_back();
         }
     }
