@@ -1,158 +1,131 @@
 /*
-    Create an array-based list or a linked-list (and then attempt the other) that:
-    - automatically inserts values in the correct position based on some order of sorting (perhaps ascending integers or lexicographical sorting of words)
-    - efficiently searches for elements (likely binary search for the array list, but what about the linked-list?)
+
+Assignment 6 (Binary search tree):
+1. Create some tests (at least one per function) that you want your Binary Search Tree (BST) to pass before you start coding.
+2. Implement a binary search tree that includes:
+    - nodes to store values,
+    - an add function that adds a new value in the appropriate location based on our ordering rules,
+        (I likely used less than or equal to going to the left and greater than values going to the right)
+    - a remove function that finds and removes a value and then picks an appropriate replacement node
+        (successor is a term often used for this)
+    - we have at least one tree traversal function
+        Bonus if you implement the three common traversals (pre-order, post-order, in-order)
+        More Bonus if you also include a breadth-first traversal (sometimes called a level-order search)
+3. Analyze and compare the complexity of insert and search as compared to a binary tree without any order in its nodes.
+
+
+Source: https://www.programiz.com/dsa/binary-search-tree
 
 */
 
 #include <iostream>
-#include <string>
 using namespace std;
 
-struct node
-{
-    int data;
-    struct node *next;
+struct node {
+  int key;
+  struct node *left, *right;
 };
 
-class linked_list
-{
-private:
-    node *head,*tail;
-public:
-    linked_list()
-    {
-        head = NULL;
-        tail = NULL;
+// Create a node
+struct node *newNode(int item) {
+  struct node *temp = (struct node *)malloc(sizeof(struct node));
+  temp->key = item;                                                       //create root node
+  temp->left = temp->right = NULL;                                        //create left and right nodes to be null for BST
+  return temp;
+}
+
+// Inorder Traversal
+void inorder(struct node *root) {
+  if (root != NULL) {                       //checks if root is null before traversing the BST in order
+    inorder(root->left);
+    cout << root->key << " -> ";            //prints the root node pointing to the key
+    inorder(root->right);
+  }
+}
+
+// Insert a node
+struct node *insert(struct node *node, int key) {
+  // Return a new node if the tree is empty
+  if (node == NULL) return newNode(key);
+
+  if (key < node->key)                                    //if key is less than the nodes key, traverse left & insert new key if subtree is null
+    node->left = insert(node->left, key);
+  else
+    node->right = insert(node->right, key);               //if key is greater than the nodes key, traverse right & insert new key if subtree is null
+
+  return node;
+}
+
+// Find the inorder successor
+struct node *minValueNode(struct node *node) {
+  struct node *current = node;
+
+  // Find the leftmost leaf
+  while (current && current->left != NULL)
+    current = current->left;
+
+  return current;
+}
+
+/*
+Deleting a node
+case 1 - if the node to be deleted is a leaf node: just delete it
+case 2 - if the node has a child node: replace the node with the child node and remove the original child node
+case 3 - if node has 2 child nodes: get the inorder successor of that node, replace node with the inorder successor,
+          remove the inorder succesor from its original position
+*/
+struct node *deleteNode(struct node *root, int key) {                 
+  // Return if the tree is empty
+  if (root == NULL) return root;
+
+  // Find the node to be deleted
+  if (key < root->key)                                          //recursively find the node to be deleted
+    root->left = deleteNode(root->left, key);
+  else if (key > root->key)
+    root->right = deleteNode(root->right, key);
+  else {
+    // If the node is with only one child or no child
+    if (root->left == NULL) {
+      struct node *temp = root->right;
+      free(root);
+      return temp;
+    } else if (root->right == NULL) {
+      struct node *temp = root->left;
+      free(root);
+      return temp;
     }
 
-/* Add a value to BACK of the queue */
-    void enqueue(int n)
-    {
-        node *tmp = new node;
-        tmp->data = n;
-        tmp->next = NULL;
+    // If the node has two children
+    struct node *temp = minValueNode(root->right);
 
-        if(head == NULL)
-        {
-            head = tmp;
-            tail = tmp;
-        }
-        else
-        {
-            tail->next = tmp;
-            tail = tail->next;
-        }
-    }
+    // Place the inorder successor in position of the node to be deleted
+    root->key = temp->key;
 
-    node* gethead()
-    {
-        return head;
-    }
+    // Delete the inorder successor
+    root->right = deleteNode(root->right, temp->key);
+  }
+  return root;
+}
 
-    static void display(node *head)
-    {
-        if(head == NULL)
-        {
-            cout << "NULL" << endl;
-        }
-        else
-        {
-            cout << head->data << endl;
-            display(head->next);
-        }
-    }
-    // help source: https://www.javatpoint.com/program-to-sort-the-elements-of-the-singly-linked-list
-    // sortList() will sort nodes of the list in ascending order
-    static void sortList(node *head) {
-        //Node current will point to head
-        struct node *current = head, *index = NULL;
-        int temp;
+// Driver code
+int main() {
+  // Create BST
+  struct node *root = NULL;
+  root = insert(root, 8);
+  root = insert(root, 3);
+  root = insert(root, 1);
+  root = insert(root, 6);
+  root = insert(root, 7);
+  root = insert(root, 10);
+  root = insert(root, 14);
+  root = insert(root, 4);
 
-        if(head == NULL) {
-            return;
-        }
-        else {
-            while(current != NULL) {
-                //Node index will point to node next to current
-                index = current->next;
+  cout << "Inorder traversal: ";
+  inorder(root);
 
-                while(index != NULL) {
-                    //If current node's data is greater than index's node data, swap the data between them
-                    if(current->data > index->data) {
-                        temp = current->data;
-                        current->data = index->data;
-                        index->data = temp;
-                    }
-                    index = index->next;
-                }
-                current = current->next;
-            }
-        }
-    }
-
-    void binaryTree(int n) {
-
-        
-    }
-
-};
-
-/* Driver code */
-int main()
-{
-    int data;
-    int counter = 5;
-
-    int dataTwo;
-    int counterTwo = 2;
-
-    linked_list randomList;
-
-
-    cout << "Create your list" << endl;
-    while (true)
-    {
-        cout << "Add a value:  ";
-        cin >> data;
-        randomList.enqueue(data);
-        counter--;
-
-        if (counter == 0)
-        {
-            break;
-        }
-    }
-
-    cout << "Your current list is:" << endl;
-    linked_list::display(randomList.gethead());
-    cout << " " << endl;
-
-    cout << "Your sorted list in ascending order is:" << endl;
-    linked_list::sortList(randomList.gethead());
-    linked_list::display(randomList.gethead());
-
-    /* add new values to list */
-    cout << "Now lets add some new values to the list in the correct position" << endl;
-
-    
-
-    while (true)
-    {
-        cout << "Add a value:  ";
-        cin >> dataTwo;
-        randomList.enqueuePos(dataTwo);
-        linked_list::display(randomList.gethead());
-        counterTwo--;
-
-        if (counterTwo == 0)
-        {
-            break;
-        }
-    }
-    linked_list::display(randomList.gethead());
-    linked_list::sortList(randomList.gethead());
-    linked_list::display(randomList.gethead());
-
-    return 0;
+  // Testing delete function
+  cout << "\nAfter deleting 10\n";
+  root = deleteNode(root, 10);
+  cout << "Inorder traversal: ";
+  inorder(root);
 }
