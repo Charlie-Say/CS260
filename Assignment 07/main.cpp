@@ -9,9 +9,10 @@ Begin
    Create a function SearchKey() to search element at a key.
    (optional) Create a function Remove() to remove element at a key.
    In main, perform switch operation and enter input as per choice.
-    - To insert key and values, call insert().
-    - To search element, call SearchKey().
-    - To remove element, call Remove().
+    - To insert key and values, call insertElement().
+    - To search element, call searchElement().
+    - To remove element, call deleteElement().
+    - Display hashMap
 End.
 
 Then create a smarter hashtable (double hashing or chaining)
@@ -43,11 +44,11 @@ class hashclass {
         hashtable = new list<int> [bucket];
     }
 
-    void insert_element(int key) {                  // Function used to insert elements to the hashtable
+    void insertElement(int key) {                  // Function used to insert elements to the hashtable
         int indexkey = hashFunction(key);           // Get the hash index of key
         hashtable[indexkey].push_back(key);
     }
-    void delete_element(int key) {          // Function used to delete elements from the hashtable
+    void deleteElement(int key) {          // Function used to delete elements from the hashtable
         int indexkey = hashFunction(key);
         list<int>::iterator i = hashtable[indexkey].begin();
 
@@ -65,7 +66,7 @@ class hashclass {
         return (a % bucket);
     }
 
-    void display_table() {           // Display hashtable values
+    void dispalyTable() {           // Display hashtable values
         for (int i = 0; i < bucket; i++) {
             cout << i;
             list<int>::iterator j = hashtable[i].begin();
@@ -77,7 +78,7 @@ class hashclass {
             cout << endl;
         }
     }
-    void search_element(int key) {        // Used to search element
+    void searchElement(int key) {        // Used to search element
         int a = 0;         // Will be 1 if element exist otherwise 0
         int indexkey = hashFunction(key);
         list<int>::iterator i = hashtable[indexkey].begin();
@@ -133,22 +134,22 @@ int main() {
             case 1: cout << "enter the element: ";
             cin >> element;
 
-            hashelement.insert_element(element);
+            hashelement.insertElement(element);
             break;
 
             case 2: cout << "Enter the element you want to search: ";
             cin >> element;
 
-            hashelement.search_element(element);
+            hashelement.searchElement(element);
             break;
 
             case 3: cout << "Enter the element to be deleted: ";
             cin >> element;
 
-            hashelement.delete_element(element);
+            hashelement.deleteElement(element);
             break;
 
-            case 4: hashelement.display_table();
+            case 4: hashelement.dispalyTable();
             break;
 
             case 5: return 0;
